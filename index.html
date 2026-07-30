@@ -4,30 +4,95 @@
     <meta charset="UTF-8">
     <title>Minecraft Liderlik Tablosu</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #121212; color: #fff; text-align: center; padding: 50px; }
-        table { margin: 0 auto; border-collapse: collapse; width: 70%; background: #1e1e1e; }
-        th, td { padding: 12px; border: 1px solid #333; }
-        th { background: #ff9800; color: #000; }
-        tr:nth-child(even) { background: #1a1a1a; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .table-container {
+            width: 80%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(30, 30, 46, 0.85);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 16px 20px;
+        }
+
+        th {
+            background: linear-gradient(90deg, #ff9800, #f57c00);
+            color: #111;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        td {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
+        }
+
+        /* Satırların üzerine gelince parlama efekti */
+        tbody tr {
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(255, 152, 0, 0.15);
+            transform: scale(1.01);
+        }
+
+        /* İlk 3 oyuncuya özel renkler eklenebilir veya sıra hizalaması */
+        td:first-child, th:first-child {
+            text-align: center;
+            width: 80px;
+        }
     </style>
 </head>
 <body>
 
-    <h1>En İyi Minecraft Oyuncuları</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Sıra</th>
-                <th>Oyuncu Adı</th>
-                <th>Seviye</th>
-                <th>Kazanılan Maç</th>
-                <th>Skor / Derece</th>
-            </tr>
-        </thead>
-        <tbody id="oyuncu-listesi">
-            <!-- Veriler JavaScript ile buraya eklenecek -->
-        </tbody>
-    </table>
+    <h1>🏆 En İyi Minecraft Oyuncuları</h1>
+    
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th>Oyuncu Adı</th>
+                    <th>Seviye</th>
+                    <th>Kazanılan Maç</th>
+                    <th>Skor / Derece</th>
+                </tr>
+            </thead>
+            <tbody id="oyuncu-listesi">
+                <!-- Veriler JavaScript ile buraya eklenecek -->
+            </tbody>
+        </table>
+    </div>
 
     <script>
         fetch('oyuncular.json')
@@ -38,7 +103,7 @@
 
                 data.forEach(oyuncu => {
                     const satir = `<tr>
-                        <td>${oyuncu.sira}</td>
+                        <td style="font-weight: bold; color: #ff9800;">#${oyuncu.sira}</td>
                         <td>${oyuncu.isim}</td>
                         <td>${oyuncu.seviye}</td>
                         <td>${oyuncu.mac}</td>
