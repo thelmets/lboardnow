@@ -5,7 +5,7 @@
     <title>Minecraft Liderlik Tablosu</title>
     <style>
         body { font-family: Arial, sans-serif; background: #121212; color: #fff; text-align: center; padding: 50px; }
-        table { margin: 0 auto; border-collapse: collapse; width: 60%; background: #1e1e1e; }
+        table { margin: 0 auto; border-collapse: collapse; width: 70%; background: #1e1e1e; }
         th, td { padding: 12px; border: 1px solid #333; }
         th { background: #ff9800; color: #000; }
         tr:nth-child(even) { background: #1a1a1a; }
@@ -19,6 +19,8 @@
             <tr>
                 <th>Sıra</th>
                 <th>Oyuncu Adı</th>
+                <th>Seviye</th>
+                <th>Kazanılan Maç</th>
                 <th>Skor / Derece</th>
             </tr>
         </thead>
@@ -28,18 +30,18 @@
     </table>
 
     <script>
-        // Arka plandaki JSON dosyasından verileri çekme
         fetch('oyuncular.json')
             .then(response => response.json())
             .then(data => {
                 const tabloGovdesi = document.getElementById('oyuncu-listesi');
-                tabloGovdesi.innerHTML = ""; // Önceki içeriği temizle
+                tabloGovdesi.innerHTML = ""; 
 
-                // JSON'daki her bir oyuncu için tabloya satır ekle
                 data.forEach(oyuncu => {
                     const satir = `<tr>
                         <td>${oyuncu.sira}</td>
                         <td>${oyuncu.isim}</td>
+                        <td>${oyuncu.seviye}</td>
+                        <td>${oyuncu.mac}</td>
                         <td>${oyuncu.skor}</td>
                     </tr>`;
                     tabloGovdesi.innerHTML += satir;
