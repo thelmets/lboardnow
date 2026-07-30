@@ -8,6 +8,7 @@
         table { margin: 0 auto; border-collapse: collapse; width: 60%; background: #1e1e1e; }
         th, td { padding: 12px; border: 1px solid #333; }
         th { background: #ff9800; color: #000; }
+        tr:nth-child(even) { background: #1a1a1a; }
     </style>
 </head>
 <body>
@@ -32,9 +33,17 @@
             .then(response => response.json())
             .then(data => {
                 const tabloGovdesi = document.getElementById('oyuncu-listesi');
-                // Verileri işleyip tabloya ekleme mantığı burada döngüyle kurulur
-                // Örnek satır:
-                tabloGovdesi.innerHTML = `<tr><td>1</td><td>ÖrnekOyuncu</td><td>9999</td></tr>`;
+                tabloGovdesi.innerHTML = ""; // Önceki içeriği temizle
+
+                // JSON'daki her bir oyuncu için tabloya satır ekle
+                data.forEach(oyuncu => {
+                    const satir = `<tr>
+                        <td>${oyuncu.sira}</td>
+                        <td>${oyuncu.isim}</td>
+                        <td>${oyuncu.skor}</td>
+                    </tr>`;
+                    tabloGovdesi.innerHTML += satir;
+                });
             })
             .catch(error => console.error('Veri yüklenemedi:', error));
     </script>
