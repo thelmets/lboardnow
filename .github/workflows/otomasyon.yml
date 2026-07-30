@@ -2,8 +2,8 @@ name: Otomatik Veri Guncelleme
 
 on:
   schedule:
-    - cron: '0 */6 *6 *' # Her 6 saatte bir çalışır
-  workflow_dispatch: # El ile de tetiklenebilir
+    - cron: '0 */6 * * *' # Her 6 saatte bir çalışır
+  workflow_dispatch:
 
 jobs:
   build:
