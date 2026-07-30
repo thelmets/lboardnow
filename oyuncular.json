@@ -2,16 +2,22 @@
     {
         "sira": 1,
         "isim": "ProMinecraftci",
-        "skor": 98500
+        "skor": 98500,
+        "seviye": 75,
+        "mac": 1250
     },
     {
         "sira": 2,
         "isim": "KralOuncu",
-        "skor": 87200
+        "skor": 87200,
+        "seviye": 68,
+        "mac": 980
     },
     {
         "sira": 3,
         "isim": "BlokUstasi",
-        "skor": 75400
+        "skor": 75400,
+        "seviye": 54,
+        "mac": 720
     }
 ]
